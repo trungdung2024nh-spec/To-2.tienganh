@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Songkran Festival - Content</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #061b31;
+    font-family: Arial, sans-serif;
+}
+
+
+/* 9:16 FRAME */
+
+.page {
+    position: absolute;
+
+    width: min(100vw, 56.25vh);
+    height: min(177.7778vw, 100vh);
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            160deg,
+            #effcff,
+            #ffffff 50%,
+            #dff7ff
+        );
+
+    animation: pageIn 1s ease;
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+
+/* WATER */
+
+.drop {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(0,170,230,0.12);
+
+    animation: floating 5s ease-in-out infinite;
+}
+
+.drop1 {
+    width: 100px;
+    height: 100px;
+
+    left: -30px;
+    top: 15%;
+}
+
+.drop2 {
+    width: 70px;
+    height: 70px;
+
+    right: -20px;
+    bottom: 15%;
+
+    animation-delay: 1.5s;
+}
+
+.drop3 {
+    width: 45px;
+    height: 45px;
+
+    right: 10%;
+    top: 10%;
+
+    animation-delay: 0.8s;
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+
+/* HEADER */
+
+.header {
+
+    position: relative;
+    z-index: 5;
+
+    height: 9%;
+
+    padding: 4% 5% 1%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    opacity: 0;
+
+    animation: headerIn 1s forwards;
+
+    animation-delay: 0.3s;
+}
+
+@keyframes headerIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header h1 {
+
+    color: #0079b8;
+
+    font-size: 3.5vh;
+
+    font-weight: 900;
+}
+
+.badge {
+
+    background: #00a8df;
+
+    color: white;
+
+    padding: 1.5% 4%;
+
+    border-radius: 30px;
+
+    font-size: 1.7vh;
+
+    font-weight: bold;
+}
+
+
+/* CONTENT */
+
+.content {
+
+    position: relative;
+    z-index: 3;
+
+    height: 84%;
+
+    padding: 1% 4%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.2%;
+}
+
+
+/* CARD */
+
+.card {
+
+    background: rgba(255,255,255,0.95);
+
+    border: 2px solid rgba(0,145,200,0.16);
+
+    border-radius: 15px;
+
+    padding: 2.5% 3.5%;
+
+    box-shadow:
+        0 5px 15px rgba(0,80,120,0.08);
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    animation: cardIn 0.8s forwards;
+}
+
+.card:nth-child(1) {
+    animation-delay: 0.6s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.9s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.card:nth-child(5) {
+    animation-delay: 1.8s;
+}
+
+.card:nth-child(6) {
+    animation-delay: 2.1s;
+}
+
+@keyframes cardIn {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h2 {
+
+    color: #0078b4;
+
+    font-size: 2.05vh;
+
+    margin-bottom: 1.2%;
+
+    line-height: 1.2;
+}
+
+.card p {
+
+    color: #17364b;
+
+    font-size: 1.43vh;
+
+    line-height: 1.32;
+
+    font-weight: 500;
+}
+
+
+/* INTRO */
+
+.intro {
+    min-height: 11%;
+}
+
+
+/* TWO COLUMNS */
+
+.row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1.2%;
+}
+
+.top-row {
+    min-height: 16%;
+}
+
+.middle-row {
+    min-height: 17%;
+}
+
+
+/* IMAGE */
+
+.image {
+
+    padding: 0;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: #007cae;
+
+    border: none;
+}
+
+.image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    animation: imageZoom 8s infinite alternate ease-in-out;
+}
+
+@keyframes imageZoom {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+.image-title {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 6%;
+
+    color: white;
+
+    font-size: 2vh;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,35,65,0.9)
+        );
+}
+
+
+/* LONG TEXT */
+
+.long {
+    min-height: 20%;
+}
+
+.long p {
+    font-size: 1.42vh;
+    line-height: 1.32;
+}
+
+
+/* CLOSING */
+
+.closing {
+    min-height: 10%;
+}
+
+
+/* NAVIGATION */
+
+.navigation {
+
+    position: absolute;
+
+    z-index: 20;
+
+    bottom: 2%;
+
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 0 5%;
+}
+
+.navigation a {
+
+    text-decoration: none;
+
+    background: #007caf;
+
+    color: white;
+
+    padding: 10px 17px;
+
+    border-radius: 25px;
+
+    font-size: 1.6vh;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.navigation a:hover {
+
+    transform: scale(1.08);
+
+    background: #00a8df;
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <div class="drop drop1"></div>
+    <div class="drop drop2"></div>
+    <div class="drop drop3"></div>
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            SONGKRAN FESTIVAL
+        </h1>
+
+        <div class="badge">
+            THAILAND
+        </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+
+        <!-- INTRODUCTION -->
+
+        <div class="card intro">
+
+            <h2>
+                ✨ Introduction
+            </h2>
+
+            <p>
+                Hello teachers and friends! Today, I would like to briefly introduce Songkran Festival – one of the most distinctive and famous cultural traditions of Thailand. ✨✨
+            </p>
+
+        </div>
+
+
+        <!-- NAME + TIME -->
+
+        <div class="row top-row">
+
+
+            <div class="card">
+
+                <h2>
+                    ☔ Name &amp; Nature
+                </h2>
+
+                <p>
+                    First, regarding its name and nature: Songkran is the traditional New Year celebration of the Thai people, marking the beginning of a new year according to the Buddhist calendar. ✨✨
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>
+                    ☔ Time
+                </h2>
+
+                <p>
+                    Second, regarding the time: The festival takes place annually from April 13 to April 15 – a time when people drive away the intense heat of summer. ✨✨
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOCATION + IMAGE -->
+
+        <div class="row middle-row">
+
+
+            <div class="card">
+
+                <h2>
+                    ☔ Location
+                </h2>
+
+                <p>
+                    Third, regarding the location: The festival is held throughout Thailand, with the liveliest celebrations taking place in major cities such as Bangkok, Chiang Mai, and Phuket. ✨✨
+                </p>
+
+            </div>
+
+
+            <div class="card image">
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Grand_songkran_%28Thai_New_Year_%29_Water_Festival.jpg"
+                    alt="Songkran Festival in Thailand"
+                >
+
+                <div class="image-title">
+                    WATER, JOY &amp; TRADITION
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WHAT TO DO -->
+
+        <div class="card long">
+
+            <h2>
+                ☔ What to do at the festival
+            </h2>
+
+            <p>
+                During Songkran, people can participate in water fights using water guns and buckets, and enjoy themselves together in the streets. In addition, visitors can visit temples, take part in traditional activities, enjoy local specialties, and immerse themselves in the lively atmosphere of the festival. ✨✨
+            </p>
+
+        </div>
+
+
+        <!-- MEANING -->
+
+        <div class="card long">
+
+            <h2>
+                ☔ Meaning
+            </h2>
+
+            <p>
+                Finally, regarding its meaning: Thai people believe that water symbolizes purity. Splashing water on one another helps wash away bad luck from the old year, brings wishes for peace and happiness in the new year, and provides an opportunity to strengthen family and community bonds. ✨✨
+            </p>
+
+        </div>
+
+
+        <!-- CLOSING -->
+
+        <div class="card closing">
+
+            <h2>
+                ✨ Closing
+            </h2>
+
+            <p>
+                Thank you, teachers and friends, for listening! ✨✨
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <a href="index.html">
+            ← BACK
+        </a>
+
+        <a href="ending.html">
+            NEXT →
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
