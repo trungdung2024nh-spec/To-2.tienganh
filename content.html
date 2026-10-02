@@ -3,605 +3,902 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Songkran Festival - Content</title>
+
+<title>Songkran Festival</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #061b31;
-    font-family: Arial, sans-serif;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 
-/* 9:16 FRAME */
+/* ==================================================
+   BACKGROUND - LIGHT WATER STYLE
+================================================== */
 
-.page {
-    position: absolute;
-
-    width: min(100vw, 56.25vh);
-    height: min(177.7778vw, 100vh);
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    overflow: hidden;
+body{
 
     background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255,255,255,.9),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(255,255,255,.75),
+            transparent 30%
+        ),
+
         linear-gradient(
-            160deg,
-            #effcff,
-            #ffffff 50%,
-            #dff7ff
+            145deg,
+            #e9fbff 0%,
+            #d2f5ff 45%,
+            #a9e8f8 100%
         );
 
-    animation: pageIn 1s ease;
+    color:#073b5c;
 }
 
-@keyframes pageIn {
 
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.92);
+/* ==================================================
+   WATER PARTICLES
+================================================== */
+
+.drop{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.7);
+
+    z-index:0;
+
+    pointer-events:none;
+
+    animation:water 5s infinite ease-in-out;
+}
+
+
+.drop:nth-child(1){
+
+    width:18px;
+    height:18px;
+
+    left:8%;
+    top:12%;
+}
+
+
+.drop:nth-child(2){
+
+    width:11px;
+    height:11px;
+
+    left:88%;
+    top:18%;
+
+    animation-delay:1s;
+}
+
+
+.drop:nth-child(3){
+
+    width:15px;
+    height:15px;
+
+    left:13%;
+    top:78%;
+
+    animation-delay:2s;
+}
+
+
+.drop:nth-child(4){
+
+    width:21px;
+    height:21px;
+
+    left:86%;
+    top:72%;
+
+    animation-delay:3s;
+}
+
+
+.drop:nth-child(5){
+
+    width:9px;
+    height:9px;
+
+    left:48%;
+    top:6%;
+
+    animation-delay:1.5s;
+}
+
+
+@keyframes water{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            scale(.6);
+
+        opacity:.25;
     }
 
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
+    50%{
 
+        transform:
+            translateY(-35px)
+            scale(1.4);
 
-/* WATER */
-
-.drop {
-    position: absolute;
-
-    border-radius: 50%;
-
-    background: rgba(0,170,230,0.12);
-
-    animation: floating 5s ease-in-out infinite;
-}
-
-.drop1 {
-    width: 100px;
-    height: 100px;
-
-    left: -30px;
-    top: 15%;
-}
-
-.drop2 {
-    width: 70px;
-    height: 70px;
-
-    right: -20px;
-    bottom: 15%;
-
-    animation-delay: 1.5s;
-}
-
-.drop3 {
-    width: 45px;
-    height: 45px;
-
-    right: 10%;
-    top: 10%;
-
-    animation-delay: 0.8s;
-}
-
-@keyframes floating {
-
-    0%,100% {
-        transform: translateY(0);
+        opacity:.8;
     }
 
-    50% {
-        transform: translateY(-18px);
+}
+
+
+/* ==================================================
+   MAIN 9:16 FRAME
+================================================== */
+
+.screen{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(100vw,55.56vh);
+
+    height:min(100vh,180vw);
+
+    margin:auto;
+
+    padding:2.3%;
+
+    display:grid;
+
+    grid-template-rows:
+
+        7fr
+        25fr
+        16fr
+        13fr
+        13fr
+        13fr
+        18fr;
+
+    gap:1.1%;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(6px);
+
+    border-left:
+        2px solid rgba(255,255,255,.65);
+
+    border-right:
+        2px solid rgba(255,255,255,.65);
+}
+
+
+/* ==================================================
+   TITLE
+================================================== */
+
+.title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    font-size:
+        clamp(18px,2.4vh,42px);
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    color:#006b96;
+
+    text-shadow:
+        0 2px 5px rgba(0,90,130,.15);
+
+    animation:titleIn 1s ease;
+}
+
+
+@keyframes titleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(-25px)
+            scale(.9);
     }
-}
 
+    to{
 
-/* HEADER */
+        opacity:1;
 
-.header {
-
-    position: relative;
-    z-index: 5;
-
-    height: 9%;
-
-    padding: 4% 5% 1%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    opacity: 0;
-
-    animation: headerIn 1s forwards;
-
-    animation-delay: 0.3s;
-}
-
-@keyframes headerIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(-25px);
+        transform:
+            translateY(0)
+            scale(1);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.header h1 {
-
-    color: #0079b8;
-
-    font-size: 3.5vh;
-
-    font-weight: 900;
-}
-
-.badge {
-
-    background: #00a8df;
-
-    color: white;
-
-    padding: 1.5% 4%;
-
-    border-radius: 30px;
-
-    font-size: 1.7vh;
-
-    font-weight: bold;
 }
 
 
-/* CONTENT */
+/* ==================================================
+   LARGE HERO IMAGE
+================================================== */
 
-.content {
+.hero{
 
-    position: relative;
-    z-index: 3;
+    position:relative;
 
-    height: 84%;
+    overflow:hidden;
 
-    padding: 1% 4%;
+    border-radius:22px;
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 1.2%;
-}
-
-
-/* CARD */
-
-.card {
-
-    background: rgba(255,255,255,0.95);
-
-    border: 2px solid rgba(0,145,200,0.16);
-
-    border-radius: 15px;
-
-    padding: 2.5% 3.5%;
+    border:
+        3px solid rgba(255,255,255,.9);
 
     box-shadow:
-        0 5px 15px rgba(0,80,120,0.08);
+        0 10px 30px rgba(0,90,130,.25);
 
-    opacity: 0;
-
-    transform: translateY(25px);
-
-    animation: cardIn 0.8s forwards;
-}
-
-.card:nth-child(1) {
-    animation-delay: 0.6s;
-}
-
-.card:nth-child(2) {
-    animation-delay: 0.9s;
-}
-
-.card:nth-child(3) {
-    animation-delay: 1.2s;
-}
-
-.card:nth-child(4) {
-    animation-delay: 1.5s;
-}
-
-.card:nth-child(5) {
-    animation-delay: 1.8s;
-}
-
-.card:nth-child(6) {
-    animation-delay: 2.1s;
-}
-
-@keyframes cardIn {
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card h2 {
-
-    color: #0078b4;
-
-    font-size: 2.05vh;
-
-    margin-bottom: 1.2%;
-
-    line-height: 1.2;
-}
-
-.card p {
-
-    color: #17364b;
-
-    font-size: 1.43vh;
-
-    line-height: 1.32;
-
-    font-weight: 500;
+    animation:heroIn 1.2s ease;
 }
 
 
-/* INTRO */
+.hero img{
 
-.intro {
-    min-height: 11%;
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    animation:zoom 8s infinite alternate;
 }
 
 
-/* TWO COLUMNS */
+.hero::after{
 
-.row {
+    content:"SONGKRAN FESTIVAL";
 
-    display: grid;
+    position:absolute;
 
-    grid-template-columns: 1fr 1fr;
+    left:0;
 
-    gap: 1.2%;
-}
+    right:0;
 
-.top-row {
-    min-height: 16%;
-}
+    bottom:0;
 
-.middle-row {
-    min-height: 17%;
-}
+    padding:
+        8% 4% 3%;
 
+    font-size:
+        clamp(13px,1.7vh,30px);
 
-/* IMAGE */
+    font-weight:900;
 
-.image {
+    letter-spacing:1px;
 
-    padding: 0;
-
-    overflow: hidden;
-
-    position: relative;
-
-    background: #007cae;
-
-    border: none;
-}
-
-.image img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    animation: imageZoom 8s infinite alternate ease-in-out;
-}
-
-@keyframes imageZoom {
-
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(1.08);
-    }
-}
-
-.image-title {
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    padding: 6%;
-
-    color: white;
-
-    font-size: 2vh;
-
-    font-weight: bold;
+    color:white;
 
     background:
         linear-gradient(
             transparent,
-            rgba(0,35,65,0.9)
+            rgba(0,70,110,.7)
         );
 }
 
 
-/* LONG TEXT */
+@keyframes heroIn{
 
-.long {
-    min-height: 20%;
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+    }
+
 }
 
-.long p {
-    font-size: 1.42vh;
-    line-height: 1.32;
+
+@keyframes zoom{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+
 }
 
 
-/* CLOSING */
+/* ==================================================
+   PHOTO GALLERY
+================================================== */
 
-.closing {
-    min-height: 10%;
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap:1.5%;
 }
 
 
-/* NAVIGATION */
+.gallery img{
 
-.navigation {
+    width:100%;
 
-    position: absolute;
+    height:100%;
 
-    z-index: 20;
+    object-fit:cover;
 
-    bottom: 2%;
+    border-radius:15px;
 
-    left: 0;
-    right: 0;
+    border:
+        2px solid rgba(255,255,255,.9);
 
-    display: flex;
+    box-shadow:
+        0 6px 18px rgba(0,90,130,.2);
 
-    justify-content: space-between;
+    animation:
+        galleryIn .8s ease both;
 
-    padding: 0 5%;
+    transition:.4s;
 }
 
-.navigation a {
 
-    text-decoration: none;
+.gallery img:hover{
 
-    background: #007caf;
+    transform:scale(1.05);
 
-    color: white;
-
-    padding: 10px 17px;
-
-    border-radius: 25px;
-
-    font-size: 1.6vh;
-
-    font-weight: bold;
-
-    transition: 0.3s;
+    box-shadow:
+        0 10px 25px rgba(0,90,130,.3);
 }
 
-.navigation a:hover {
 
-    transform: scale(1.08);
+.gallery img:nth-child(2){
 
-    background: #00a8df;
+    animation-delay:.15s;
 }
+
+
+.gallery img:nth-child(3){
+
+    animation-delay:.3s;
+}
+
+
+@keyframes galleryIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.8);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+    }
+
+}
+
+
+/* ==================================================
+   CONTENT CARDS
+================================================== */
+
+.card{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:
+        3.5% 4.5%;
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    border:
+        1px solid rgba(255,255,255,.95);
+
+    box-shadow:
+        0 7px 18px rgba(0,90,130,.18);
+
+    overflow:hidden;
+
+    animation:
+        cardIn .8s ease both;
+}
+
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:90px;
+
+    height:90px;
+
+    right:-40px;
+
+    top:-40px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,180,220,.08);
+}
+
+
+.card::after{
+
+    content:"💧";
+
+    position:absolute;
+
+    right:3%;
+
+    bottom:-8%;
+
+    font-size:2.5em;
+
+    opacity:.12;
+}
+
+
+@keyframes cardIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateX(-30px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateX(0);
+    }
+
+}
+
+
+/* ==================================================
+   TEXT
+================================================== */
+
+.text{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:
+        clamp(10px,1.35vh,25px);
+
+    line-height:1.4;
+
+    color:#06496b;
+
+}
+
+
+.text strong{
+
+    font-weight:900;
+
+    color:#006b9c;
+}
+
+
+.icon{
+
+    font-size:1.15em;
+}
+
+
+/* ==================================================
+   FINAL SECTION
+================================================== */
+
+.final-section{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1.2fr;
+
+    gap:1.5%;
+}
+
+
+.final-image{
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    border:
+        2px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 8px 20px rgba(0,90,130,.22);
+}
+
+
+.final-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+
+.final-image img:hover{
+
+    transform:scale(1.07);
+}
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+.navigation{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:1.2%;
+
+    transform:translateX(-50%);
+
+    z-index:50;
+
+    display:flex;
+
+    gap:10px;
+}
+
+
+.navigation a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    padding:
+        7px 14px;
+
+    border-radius:20px;
+
+    background:
+        rgba(0,105,155,.9);
+
+    border:
+        1px solid rgba(255,255,255,.8);
+
+    box-shadow:
+        0 3px 10px rgba(0,90,130,.2);
+
+    transition:.3s;
+}
+
+
+.navigation a:hover{
+
+    background:white;
+
+    color:#0077a8;
+
+    transform:scale(1.08);
+}
+
+
+/* ==================================================
+   SMALL SCREEN
+================================================== */
+
+@media(max-height:700px){
+
+    .text{
+
+        font-size:10px;
+
+        line-height:1.25;
+    }
+
+    .title{
+
+        font-size:17px;
+    }
+
+    .navigation a{
+
+        font-size:10px;
+
+        padding:
+            5px 9px;
+    }
+
+}
+
 </style>
 </head>
 
 
 <body>
 
-<div class="page">
+
+<!-- ==================================================
+     WATER PARTICLES
+================================================== -->
+
+<div class="drop"></div>
+<div class="drop"></div>
+<div class="drop"></div>
+<div class="drop"></div>
+<div class="drop"></div>
 
 
-    <div class="drop drop1"></div>
-    <div class="drop drop2"></div>
-    <div class="drop drop3"></div>
+<!-- ==================================================
+     MAIN SCREEN
+================================================== -->
+
+<div class="screen">
 
 
-    <!-- HEADER -->
+    <!-- TITLE -->
 
-    <div class="header">
+    <div class="title">
 
-        <h1>
-            SONGKRAN FESTIVAL
-        </h1>
-
-        <div class="badge">
-            THAILAND
-        </div>
+        ☔ SONGKRAN FESTIVAL ☔
 
     </div>
 
 
-    <!-- CONTENT -->
+    <!-- ==================================================
+         HERO IMAGE
+    ================================================== -->
 
-    <div class="content">
+    <div class="hero">
 
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/14%20April%202025%20-%20Songkran%20on%20Si%20Lom%20Road%2C%20Bangkok%20-%20img%2005.jpg"
+        alt="Songkran Festival Bangkok">
 
-        <!-- INTRODUCTION -->
-
-        <div class="card intro">
-
-            <h2>
-                ✨ Introduction
-            </h2>
-
-            <p>
-                Hello teachers and friends! Today, I would like to briefly introduce Songkran Festival – one of the most distinctive and famous cultural traditions of Thailand. ✨✨
-            </p>
-
-        </div>
+    </div>
 
 
-        <!-- NAME + TIME -->
+    <!-- ==================================================
+         PHOTO GALLERY
+    ================================================== -->
 
-        <div class="row top-row">
+    <div class="gallery">
 
-
-            <div class="card">
-
-                <h2>
-                    ☔ Name &amp; Nature
-                </h2>
-
-                <p>
-                    First, regarding its name and nature: Songkran is the traditional New Year celebration of the Thai people, marking the beginning of a new year according to the Buddhist calendar. ✨✨
-                </p>
-
-            </div>
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Pre-Songkran%20Festival%201%2C%20Tak%2C%20Thailand.JPG"
+        alt="Songkran Thailand">
 
 
-            <div class="card">
-
-                <h2>
-                    ☔ Time
-                </h2>
-
-                <p>
-                    Second, regarding the time: The festival takes place annually from April 13 to April 15 – a time when people drive away the intense heat of summer. ✨✨
-                </p>
-
-            </div>
-
-        </div>
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Saturday%2012%20April%202025%20Songkran%20on%20Si%20Lom%20Road%20Bangkok%20-%20img%2010.jpg"
+        alt="Songkran water festival">
 
 
-        <!-- LOCATION + IMAGE -->
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bangkok%20Songkran%20Festival%202562%2C%20Peak%20Hora%20%2827%29.jpg"
+        alt="Songkran celebration">
 
-        <div class="row middle-row">
-
-
-            <div class="card">
-
-                <h2>
-                    ☔ Location
-                </h2>
-
-                <p>
-                    Third, regarding the location: The festival is held throughout Thailand, with the liveliest celebrations taking place in major cities such as Bangkok, Chiang Mai, and Phuket. ✨✨
-                </p>
-
-            </div>
+    </div>
 
 
-            <div class="card image">
+    <!-- ==================================================
+         NAME & NATURE
+    ================================================== -->
 
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Grand_songkran_%28Thai_New_Year_%29_Water_Festival.jpg"
-                    alt="Songkran Festival in Thailand"
-                >
+    <div class="card">
 
-                <div class="image-title">
-                    WATER, JOY &amp; TRADITION
-                </div>
+        <div class="text">
 
-            </div>
+            <span class="icon">☔</span>
 
-        </div>
+            <strong>NAME & NATURE</strong><br>
 
+            Songkran is the traditional New Year
+            celebration of the Thai people,
+            marking the beginning of a new year
+            according to the Buddhist calendar.
 
-        <!-- WHAT TO DO -->
-
-        <div class="card long">
-
-            <h2>
-                ☔ What to do at the festival
-            </h2>
-
-            <p>
-                During Songkran, people can participate in water fights using water guns and buckets, and enjoy themselves together in the streets. In addition, visitors can visit temples, take part in traditional activities, enjoy local specialties, and immerse themselves in the lively atmosphere of the festival. ✨✨
-            </p>
-
-        </div>
-
-
-        <!-- MEANING -->
-
-        <div class="card long">
-
-            <h2>
-                ☔ Meaning
-            </h2>
-
-            <p>
-                Finally, regarding its meaning: Thai people believe that water symbolizes purity. Splashing water on one another helps wash away bad luck from the old year, brings wishes for peace and happiness in the new year, and provides an opportunity to strengthen family and community bonds. ✨✨
-            </p>
-
-        </div>
-
-
-        <!-- CLOSING -->
-
-        <div class="card closing">
-
-            <h2>
-                ✨ Closing
-            </h2>
-
-            <p>
-                Thank you, teachers and friends, for listening! ✨✨
-            </p>
+            <span class="icon">✨</span>
 
         </div>
 
     </div>
 
 
-    <!-- NAVIGATION -->
+    <!-- ==================================================
+         TIME
+    ================================================== -->
 
-    <div class="navigation">
+    <div class="card">
 
-        <a href="index.html">
-            ← BACK
-        </a>
+        <div class="text">
 
-        <a href="ending.html">
-            NEXT →
-        </a>
+            <span class="icon">☔</span>
+
+            <strong>TIME</strong><br>
+
+            The festival takes place annually from
+            <strong>April 13 to April 15</strong>,
+            during the hot summer season.
+
+            <span class="icon">✨</span>
+
+        </div>
 
     </div>
+
+
+    <!-- ==================================================
+         LOCATION
+    ================================================== -->
+
+    <div class="card">
+
+        <div class="text">
+
+            <span class="icon">☔</span>
+
+            <strong>LOCATION</strong><br>
+
+            Songkran is celebrated throughout Thailand,
+            especially in major cities such as
+            <strong>Bangkok, Chiang Mai, and Phuket.</strong>
+
+            <span class="icon">✨</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         ACTIVITIES + MEANING
+    ================================================== -->
+
+    <div class="final-section">
+
+
+        <!-- IMAGE -->
+
+        <div class="final-image">
+
+            <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bangkok%20Songkran%20Festival%202562%2C%20Peak%20Hora%20%2829%29.jpg"
+            alt="Songkran water festival">
+
+        </div>
+
+
+        <!-- TEXT -->
+
+        <div class="card">
+
+            <div class="text">
+
+                <span class="icon">☔</span>
+
+                <strong>ACTIVITIES</strong><br>
+
+                People enjoy water fights with water guns
+                and buckets, visit temples, join traditional
+                activities, taste local specialties,
+                and enjoy the lively atmosphere.
+
+                <br><br>
+
+                <span class="icon">☔</span>
+
+                <strong>MEANING</strong><br>
+
+                Water symbolizes purity.
+                It represents washing away bad luck,
+                bringing peace and happiness,
+                and strengthening family and community bonds.
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 </div>
+
+
+<!-- ==================================================
+     NAVIGATION
+================================================== -->
+
+<div class="navigation">
+
+    <a href="index.html">
+        ← BACK
+    </a>
+
+    <a href="ending.html">
+        NEXT →
+    </a>
+
+</div>
+
 
 </body>
 </html>
