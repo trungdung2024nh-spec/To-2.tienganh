@@ -23,14 +23,13 @@ html,body{
 
 body{
     background:
-        radial-gradient(circle at 15% 10%, rgba(255,255,255,.9), transparent 28%),
-        radial-gradient(circle at 85% 85%, rgba(255,255,255,.75), transparent 30%),
-        linear-gradient(145deg, #e9fbff 0%, #d2f5ff 45%, #a9e8f8 100%);
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,.95), transparent 28%),
+        radial-gradient(circle at 85% 85%, rgba(255,255,255,.8), transparent 30%),
+        linear-gradient(145deg,#e9fbff 0%,#d2f5ff 45%,#a9e8f8 100%);
     color:#073b5c;
 }
 
-
-/* WATER DROPS */
+/* ================= WATER EFFECT ================= */
 
 .drop{
     position:fixed;
@@ -81,7 +80,6 @@ body{
 }
 
 @keyframes water{
-
     0%,100%{
         transform:translateY(0) scale(.6);
         opacity:.25;
@@ -91,36 +89,44 @@ body{
         transform:translateY(-35px) scale(1.4);
         opacity:.8;
     }
-
 }
 
-
-/* MAIN SCREEN */
+/* ================= MAIN SCREEN ================= */
 
 .screen{
 
     position:relative;
-
     z-index:2;
 
-    width:min(100vw,55.56vh);
-
-    height:min(100vh,180vw);
+    width:min(100vw,56.25vh);
+    height:min(100vh,177.78vw);
 
     margin:auto;
 
-    padding:2.3%;
+    padding:1.8%;
 
     display:grid;
 
+    /*
+       7 khu vực:
+
+       1. Title
+       2. Main image
+       3. Gallery
+       4. Name + Time
+       5. Location + Activities
+       6. Meaning
+       7. Navigation
+    */
+
     grid-template-rows:
-        7fr
-        24fr
+        5fr
+        23fr
         14fr
-        7fr
-        6fr
+        11fr
+        18fr
         20fr
-        16fr;
+        5fr;
 
     gap:1%;
 
@@ -129,32 +135,32 @@ body{
     backdrop-filter:blur(6px);
 
     border-left:2px solid rgba(255,255,255,.65);
-
     border-right:2px solid rgba(255,255,255,.65);
+
+    overflow:hidden;
 }
 
-
-/* TITLE */
+/* ================= TITLE ================= */
 
 .title{
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
 
-    font-size:clamp(18px,2.4vh,42px);
+    font-size:clamp(15px,2.1vh,38px);
 
     font-weight:900;
 
-    letter-spacing:1px;
+    letter-spacing:.8px;
 
     color:#006b96;
 
-    text-shadow:0 2px 5px rgba(0,90,130,.15);
+    text-shadow:
+        0 2px 5px rgba(0,90,130,.15);
 
     animation:titleIn 1s ease;
 }
@@ -163,30 +169,34 @@ body{
 
     from{
         opacity:0;
-        transform:translateY(-25px) scale(.9);
+        transform:translateY(-20px) scale(.9);
     }
 
     to{
         opacity:1;
         transform:translateY(0) scale(1);
     }
-
 }
 
-
-/* HERO */
+/* ================= MAIN IMAGE ================= */
 
 .hero{
 
     position:relative;
 
+    width:100%;
+    height:100%;
+
+    min-height:0;
+
     overflow:hidden;
 
-    border-radius:22px;
+    border-radius:20px;
 
     border:3px solid rgba(255,255,255,.9);
 
-    box-shadow:0 10px 30px rgba(0,90,130,.25);
+    box-shadow:
+        0 8px 25px rgba(0,90,130,.25);
 
     animation:heroIn 1.2s ease;
 }
@@ -194,12 +204,11 @@ body{
 .hero img{
 
     width:100%;
-
     height:100%;
 
-    object-fit:cover;
-
     display:block;
+
+    object-fit:cover;
 
     animation:zoom 8s infinite alternate;
 }
@@ -211,39 +220,37 @@ body{
     position:absolute;
 
     left:0;
-
     right:0;
-
     bottom:0;
 
     padding:8% 4% 3%;
 
-    font-size:clamp(13px,1.7vh,30px);
+    font-size:clamp(11px,1.55vh,28px);
 
     font-weight:900;
 
-    letter-spacing:1px;
+    letter-spacing:.8px;
 
     color:white;
 
-    background:linear-gradient(
-        transparent,
-        rgba(0,70,110,.7)
-    );
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,70,110,.72)
+        );
 }
 
 @keyframes heroIn{
 
     from{
         opacity:0;
-        transform:scale(.92);
+        transform:scale(.94);
     }
 
     to{
         opacity:1;
         transform:scale(1);
     }
-
 }
 
 @keyframes zoom{
@@ -253,19 +260,25 @@ body{
     }
 
     to{
-        transform:scale(1.08);
+        transform:scale(1.06);
     }
-
 }
 
-
-/* GALLERY */
+/* ================= GALLERY ================= */
 
 .gallery{
 
+    width:100%;
+    height:100%;
+
+    min-height:0;
+
     display:grid;
 
-    grid-template-columns:1.5fr 1fr 1fr;
+    grid-template-columns:
+        1.45fr
+        1fr
+        1fr;
 
     gap:1.5%;
 }
@@ -273,8 +286,9 @@ body{
 .gallery img{
 
     width:100%;
-
     height:100%;
+
+    min-height:0;
 
     object-fit:cover;
 
@@ -282,27 +296,17 @@ body{
 
     border:2px solid rgba(255,255,255,.9);
 
-    box-shadow:0 6px 18px rgba(0,90,130,.2);
+    box-shadow:
+        0 5px 15px rgba(0,90,130,.2);
 
     animation:galleryIn .8s ease both;
-
-    transition:.4s;
-}
-
-.gallery img:hover{
-
-    transform:scale(1.05);
-
-    box-shadow:0 10px 25px rgba(0,90,130,.3);
 }
 
 .gallery img:nth-child(2){
-
     animation-delay:.15s;
 }
 
 .gallery img:nth-child(3){
-
     animation-delay:.3s;
 }
 
@@ -310,40 +314,68 @@ body{
 
     from{
         opacity:0;
-        transform:scale(.8);
+        transform:scale(.85);
     }
 
     to{
         opacity:1;
         transform:scale(1);
     }
-
 }
 
+/* ================= INFORMATION ROW ================= */
 
-/* CARDS */
+.info-row{
+
+    width:100%;
+    height:100%;
+
+    min-height:0;
+
+    display:grid;
+
+    grid-template-columns:
+        1.65fr
+        1fr;
+
+    gap:1.5%;
+}
+
+/* ================= CARDS ================= */
 
 .card{
 
     position:relative;
 
+    width:100%;
+    height:100%;
+
+    min-height:0;
+
     display:flex;
 
     align-items:flex-start;
 
-    padding:3% 4.5%;
+    padding:3.5% 4%;
 
     border-radius:17px;
 
-    background:rgba(255,255,255,.82);
+    background:
+        rgba(255,255,255,.86);
 
-    border:1px solid rgba(255,255,255,.95);
+    border:
+        1px solid rgba(255,255,255,.95);
 
-    box-shadow:0 7px 18px rgba(0,90,130,.18);
-
-    overflow:hidden;
+    box-shadow:
+        0 6px 17px rgba(0,90,130,.18);
 
     animation:cardIn .8s ease both;
+
+    /*
+       QUAN TRỌNG:
+       Không dùng fixed position.
+       Không để navigation đè lên card.
+    */
 }
 
 .card::before{
@@ -352,17 +384,16 @@ body{
 
     position:absolute;
 
-    width:90px;
+    width:70px;
+    height:70px;
 
-    height:90px;
-
-    right:-40px;
-
-    top:-40px;
+    right:-30px;
+    top:-30px;
 
     border-radius:50%;
 
-    background:rgba(0,180,220,.08);
+    background:
+        rgba(0,180,220,.08);
 }
 
 .card::after{
@@ -372,30 +403,27 @@ body{
     position:absolute;
 
     right:3%;
+    bottom:-7%;
 
-    bottom:-8%;
+    font-size:2.2em;
 
-    font-size:2.5em;
-
-    opacity:.12;
+    opacity:.1;
 }
 
 @keyframes cardIn{
 
     from{
         opacity:0;
-        transform:translateX(-30px);
+        transform:translateX(-25px);
     }
 
     to{
         opacity:1;
         transform:translateX(0);
     }
-
 }
 
-
-/* TEXT */
+/* ================= TEXT ================= */
 
 .text{
 
@@ -403,12 +431,13 @@ body{
 
     z-index:2;
 
-    font-size:clamp(9px,1.22vh,24px);
+    width:100%;
 
-    line-height:1.28;
+    font-size:clamp(8.5px,1.08vh,21px);
+
+    line-height:1.27;
 
     color:#06496b;
-
 }
 
 .text strong{
@@ -416,28 +445,47 @@ body{
     font-weight:900;
 
     color:#006b9c;
-
 }
 
 .icon{
 
-    font-size:1.15em;
-
+    font-size:1.08em;
 }
 
+/* ================= LOCATION ================= */
 
-/* FINAL */
+.location-card{
+
+    width:100%;
+    height:100%;
+
+    min-height:0;
+}
+
+/* ================= FINAL SECTION ================= */
 
 .final-section{
 
+    width:100%;
+    height:100%;
+
+    min-height:0;
+
     display:grid;
 
-    grid-template-columns:1fr 1.2fr;
+    grid-template-columns:
+        1fr
+        1.15fr;
 
     gap:1.5%;
 }
 
 .final-image{
+
+    width:100%;
+    height:100%;
+
+    min-height:0;
 
     overflow:hidden;
 
@@ -445,14 +493,16 @@ body{
 
     border:2px solid rgba(255,255,255,.9);
 
-    box-shadow:0 8px 20px rgba(0,90,130,.22);
+    box-shadow:
+        0 7px 18px rgba(0,90,130,.22);
 }
 
 .final-image img{
 
     width:100%;
-
     height:100%;
+
+    display:block;
 
     object-fit:cover;
 
@@ -461,11 +511,10 @@ body{
 
 .final-image img:hover{
 
-    transform:scale(1.07);
+    transform:scale(1.06);
 }
 
-
-/* DECORATIONS */
+/* ================= WATER SYMBOLS ================= */
 
 .water-symbol{
 
@@ -476,21 +525,18 @@ body{
     opacity:.35;
 
     animation:float 4s infinite ease-in-out;
+
+    z-index:3;
 }
 
 .water1{
-
-    left:3%;
-
+    left:2%;
     top:32%;
 }
 
 .water2{
-
-    right:3%;
-
+    right:2%;
     top:48%;
-
     animation-delay:1.5s;
 }
 
@@ -503,27 +549,22 @@ body{
     50%{
         transform:translateY(-12px);
     }
-
 }
 
-
-/* NAVIGATION */
+/* ================= NAVIGATION ================= */
 
 .navigation{
 
-    position:fixed;
-
-    left:50%;
-
-    bottom:0.15%;
-
-    transform:translateX(-50%);
-
-    z-index:50;
+    width:100%;
+    height:100%;
 
     display:flex;
 
-    gap:40px;
+    align-items:center;
+
+    justify-content:center;
+
+    gap:35px;
 }
 
 .navigation a{
@@ -532,19 +573,23 @@ body{
 
     text-decoration:none;
 
-    font-size:12px;
+    font-size:clamp(8px,1vh,15px);
 
     font-weight:bold;
 
-    padding:6px 14px;
+    padding:
+        5px 13px;
 
     border-radius:20px;
 
-    background:rgba(0,105,155,.9);
+    background:
+        rgba(0,105,155,.92);
 
-    border:1px solid rgba(255,255,255,.8);
+    border:
+        1px solid rgba(255,255,255,.8);
 
-    box-shadow:0 3px 10px rgba(0,90,130,.2);
+    box-shadow:
+        0 3px 10px rgba(0,90,130,.2);
 
     transition:.3s;
 }
@@ -558,30 +603,31 @@ body{
     transform:scale(1.08);
 }
 
-
-/* SMALL SCREEN */
+/* ================= SMALL SCREEN ================= */
 
 @media(max-height:700px){
 
+    .screen{
+        padding:1.5%;
+    }
+
     .text{
-
-        font-size:10px;
-
-        line-height:1.2;
+        font-size:9px;
+        line-height:1.18;
     }
 
     .title{
+        font-size:15px;
+    }
 
-        font-size:17px;
+    .navigation{
+        gap:25px;
     }
 
     .navigation a{
-
-        font-size:10px;
-
-        padding:5px 9px;
+        font-size:9px;
+        padding:4px 9px;
     }
-
 }
 
 </style>
@@ -589,6 +635,8 @@ body{
 
 
 <body>
+
+<!-- WATER EFFECTS -->
 
 <div class="drop"></div>
 <div class="drop"></div>
@@ -600,15 +648,15 @@ body{
 <div class="water-symbol water2">💦</div>
 
 
+<!-- ================= MAIN PRESENTATION ================= -->
+
 <div class="screen">
 
 
     <!-- TITLE -->
 
     <div class="title">
-
         🌊 SONGKRAN – THAILAND'S WATER FESTIVAL 🌊
-
     </div>
 
 
@@ -623,7 +671,7 @@ body{
     </div>
 
 
-    <!-- GALLERY -->
+    <!-- IMAGE GALLERY -->
 
     <div class="gallery">
 
@@ -642,34 +690,49 @@ body{
     </div>
 
 
-    <!-- NAME & NATURE -->
+    <!-- NAME + TIME -->
 
-    <div class="card">
+    <div class="info-row">
 
-        <div class="text">
 
-            <span class="icon">☔</span>
+        <!-- NAME & NATURE -->
 
-            <strong>NAME & NATURE</strong><br>
+        <div class="card">
 
-            • Thailand's traditional New Year<br>
+            <div class="text">
 
-            • Marks the New Year according to the Buddhist calendar
+                <span class="icon">☔</span>
+
+                <strong>NAME & NATURE</strong>
+
+                <br>
+
+                • Thailand's traditional New Year
+
+                <br>
+
+                • Marks the New Year according to the Buddhist calendar
+
+            </div>
 
         </div>
 
-    </div>
 
+        <!-- TIME -->
 
-    <!-- TIME -->
+        <div class="card">
 
-    <div class="card">
+            <div class="text">
 
-        <div class="text">
+                <span class="icon">📅</span>
 
-            <span class="icon">📅</span>
+                <strong>TIME</strong>
 
-            <strong>TIME:</strong> April 13–15
+                <br>
+
+                April 13–15
+
+            </div>
 
         </div>
 
@@ -678,15 +741,19 @@ body{
 
     <!-- LOCATION + ACTIVITIES -->
 
-    <div class="card">
+    <div class="card location-card">
 
         <div class="text">
 
             <span class="icon">📍</span>
 
-            <strong>LOCATION</strong><br>
+            <strong>LOCATION</strong>
 
-            • Across Thailand<br>
+            <br>
+
+            • Across Thailand
+
+            <br>
 
             • Famous in Bangkok, Chiang Mai, and Phuket
 
@@ -694,11 +761,17 @@ body{
 
             <span class="icon">💦</span>
 
-            <strong>WHAT DO PEOPLE DO?</strong><br>
+            <strong>WHAT DO PEOPLE DO?</strong>
 
-            • Splash water and have fun in the streets<br>
+            <br>
 
-            • Visit temples and join traditional activities<br>
+            • Splash water and have fun in the streets
+
+            <br>
+
+            • Visit temples and join traditional activities
+
+            <br>
 
             • Enjoy Thai food
 
@@ -711,6 +784,9 @@ body{
 
     <div class="final-section">
 
+
+        <!-- IMAGE -->
+
         <div class="final-image">
 
             <img
@@ -720,17 +796,25 @@ body{
         </div>
 
 
+        <!-- MEANING CARD -->
+
         <div class="card">
 
             <div class="text">
 
                 <span class="icon">✨</span>
 
-                <strong>MEANING</strong><br>
+                <strong>MEANING</strong>
 
-                • Water symbolizes purity<br>
+                <br>
 
-                • Washes away bad luck and brings peace<br>
+                • Water symbolizes purity
+
+                <br>
+
+                • Washes away bad luck and brings peace
+
+                <br>
 
                 • Strengthens family and community bonds
 
@@ -738,7 +822,9 @@ body{
 
                 <span class="icon">🌺</span>
 
-                <strong>TRADITIONAL HIGHLIGHTS</strong><br>
+                <strong>TRADITIONAL HIGHLIGHTS</strong>
+
+                <br>
 
                 Songkran is also a time for families to reunite,
                 visit temples, show respect to elders,
@@ -750,19 +836,23 @@ body{
 
     </div>
 
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <a href="index.html">
+            ← BACK
+        </a>
+
+        <a href="ending.html">
+            NEXT →
+        </a>
+
+    </div>
+
+
 </div>
-
-
-<!-- NAVIGATION -->
-
-<div class="navigation">
-
-    <a href="index.html">← BACK</a>
-
-    <a href="ending.html">NEXT →</a>
-
-</div>
-
 
 </body>
 </html>
