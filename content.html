@@ -600,26 +600,64 @@ body{
     transform:scale(1.07);
 }
 
-
 /* ==================================================
    NAVIGATION
 ================================================== */
 
 .navigation{
-
     position:fixed;
 
-    left:50%;
-
-    bottom:1.2%;
-
-    transform:translateX(-50%);
+    left:0;
+    right:0;
+    bottom:1.5%;
 
     z-index:50;
 
     display:flex;
 
-    gap:10px;
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 3%;
+
+    pointer-events:none;
+}
+
+
+.navigation a{
+
+    pointer-events:auto;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+    background:rgba(0,105,155,.9);
+
+    border:1px solid rgba(255,255,255,.8);
+
+    box-shadow:0 3px 10px rgba(0,90,130,.2);
+
+    transition:.3s;
+}
+
+
+.navigation a:hover{
+
+    background:white;
+
+    color:#0077a8;
+
+    transform:scale(1.08);
 }
 
 
