@@ -23,13 +23,14 @@ html,body{
 
 body{
     background:
-        radial-gradient(circle at 15% 10%, rgba(255,255,255,.95), transparent 28%),
-        radial-gradient(circle at 85% 85%, rgba(255,255,255,.8), transparent 30%),
+        radial-gradient(circle at 15% 10%,rgba(255,255,255,.95),transparent 28%),
+        radial-gradient(circle at 85% 85%,rgba(255,255,255,.8),transparent 30%),
         linear-gradient(145deg,#e9fbff 0%,#d2f5ff 45%,#a9e8f8 100%);
     color:#073b5c;
 }
 
-/* ================= WATER EFFECT ================= */
+
+/* ================= WATER ================= */
 
 .drop{
     position:fixed;
@@ -91,7 +92,8 @@ body{
     }
 }
 
-/* ================= MAIN SCREEN ================= */
+
+/* ================= SCREEN ================= */
 
 .screen{
 
@@ -108,15 +110,13 @@ body{
     display:grid;
 
     /*
-       7 khu vực:
-
-       1. Title
-       2. Main image
-       3. Gallery
-       4. Name + Time
-       5. Location + Activities
-       6. Meaning
-       7. Navigation
+       TITLE
+       HERO
+       GALLERY
+       NAME + TIME
+       LOCATION
+       MEANING
+       NAVIGATION
     */
 
     grid-template-rows:
@@ -124,8 +124,8 @@ body{
         23fr
         14fr
         11fr
-        18fr
-        20fr
+        16fr
+        23fr
         5fr;
 
     gap:1%;
@@ -139,6 +139,7 @@ body{
 
     overflow:hidden;
 }
+
 
 /* ================= TITLE ================= */
 
@@ -178,7 +179,8 @@ body{
     }
 }
 
-/* ================= MAIN IMAGE ================= */
+
+/* ================= HERO ================= */
 
 .hero{
 
@@ -264,6 +266,7 @@ body{
     }
 }
 
+
 /* ================= GALLERY ================= */
 
 .gallery{
@@ -323,7 +326,8 @@ body{
     }
 }
 
-/* ================= INFORMATION ROW ================= */
+
+/* ================= NAME + TIME ================= */
 
 .info-row{
 
@@ -341,7 +345,8 @@ body{
     gap:1.5%;
 }
 
-/* ================= CARDS ================= */
+
+/* ================= CARD ================= */
 
 .card{
 
@@ -360,22 +365,16 @@ body{
 
     border-radius:17px;
 
-    background:
-        rgba(255,255,255,.86);
+    background:rgba(255,255,255,.86);
 
-    border:
-        1px solid rgba(255,255,255,.95);
+    border:1px solid rgba(255,255,255,.95);
 
     box-shadow:
         0 6px 17px rgba(0,90,130,.18);
 
     animation:cardIn .8s ease both;
 
-    /*
-       QUAN TRỌNG:
-       Không dùng fixed position.
-       Không để navigation đè lên card.
-    */
+    overflow:hidden;
 }
 
 .card::before{
@@ -392,8 +391,7 @@ body{
 
     border-radius:50%;
 
-    background:
-        rgba(0,180,220,.08);
+    background:rgba(0,180,220,.08);
 }
 
 .card::after{
@@ -423,19 +421,28 @@ body{
     }
 }
 
-/* ================= TEXT ================= */
+
+/* ================= NORMAL TEXT ================= */
 
 .text{
+
     position:relative;
+
     z-index:2;
+
     width:100%;
-    font-size:clamp(11px,1.45vh,25px);
-    line-height:1.35;
+
+    font-size:clamp(8.5px,1.08vh,21px);
+
+    line-height:1.27;
+
     color:#06496b;
 }
 
 .text strong{
+
     font-weight:900;
+
     color:#006b9c;
 }
 
@@ -444,39 +451,12 @@ body{
 }
 
 
-/* ================= MEANING SECTION ================= */
-
-.final-section{
-    width:100%;
-    height:100%;
-    min-height:0;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1.15fr;
-
-    gap:1.5%;
-}
-
-
-/* Ô Meaning */
-
-.final-section .card{
-    padding:3% 4%;
-}
-
-
-/* Chữ trong Meaning nhỏ hơn một chút
-   để không bị lệch / tràn */
-
-.final-section .text{
-    font-size:clamp(9.5px,1.25vh,22px);
-    line-height:1.25;
-}
-}
 /* ================= LOCATION ================= */
+
+/*
+   Giảm riêng phần này để LOCATION
+   và WHAT DO PEOPLE DO? không quá to.
+*/
 
 .location-card{
 
@@ -484,7 +464,18 @@ body{
     height:100%;
 
     min-height:0;
+
+    padding-top:3%;
+    padding-bottom:2.5%;
 }
+
+.location-card .text{
+
+    font-size:clamp(8px,0.98vh,19px);
+
+    line-height:1.18;
+}
+
 
 /* ================= FINAL SECTION ================= */
 
@@ -497,12 +488,21 @@ body{
 
     display:grid;
 
+    /*
+       Meaning rộng hơn.
+       Nhờ vậy Traditional Highlights
+       sẽ ít bị xuống dòng.
+    */
+
     grid-template-columns:
-        1fr
-        1.15fr;
+        .82fr
+        1.38fr;
 
     gap:1.5%;
 }
+
+
+/* ================= FINAL IMAGE ================= */
 
 .final-image{
 
@@ -538,7 +538,25 @@ body{
     transform:scale(1.06);
 }
 
-/* ================= WATER SYMBOLS ================= */
+
+/* ================= MEANING CARD ================= */
+
+.final-section .card{
+
+    padding:3% 4%;
+
+    align-items:flex-start;
+}
+
+.final-section .text{
+
+    font-size:clamp(8px,0.94vh,18px);
+
+    line-height:1.18;
+}
+
+
+/* ================= WATER SYMBOL ================= */
 
 .water-symbol{
 
@@ -575,6 +593,7 @@ body{
     }
 }
 
+
 /* ================= NAVIGATION ================= */
 
 .navigation{
@@ -601,16 +620,13 @@ body{
 
     font-weight:bold;
 
-    padding:
-        5px 13px;
+    padding:5px 13px;
 
     border-radius:20px;
 
-    background:
-        rgba(0,105,155,.92);
+    background:rgba(0,105,155,.92);
 
-    border:
-        1px solid rgba(255,255,255,.8);
+    border:1px solid rgba(255,255,255,.8);
 
     box-shadow:
         0 3px 10px rgba(0,90,130,.2);
@@ -627,7 +643,8 @@ body{
     transform:scale(1.08);
 }
 
-/* ================= SMALL SCREEN ================= */
+
+/* ================= SMALL PHONE ================= */
 
 @media(max-height:700px){
 
@@ -637,7 +654,17 @@ body{
 
     .text{
         font-size:9px;
-        line-height:1.18;
+        line-height:1.16;
+    }
+
+    .location-card .text{
+        font-size:8.5px;
+        line-height:1.14;
+    }
+
+    .final-section .text{
+        font-size:8.5px;
+        line-height:1.14;
     }
 
     .title{
@@ -672,8 +699,6 @@ body{
 <div class="water-symbol water2">💦</div>
 
 
-<!-- ================= MAIN PRESENTATION ================= -->
-
 <div class="screen">
 
 
@@ -695,7 +720,7 @@ body{
     </div>
 
 
-    <!-- IMAGE GALLERY -->
+    <!-- GALLERY -->
 
     <div class="gallery">
 
@@ -718,9 +743,6 @@ body{
 
     <div class="info-row">
 
-
-        <!-- NAME & NATURE -->
-
         <div class="card">
 
             <div class="text">
@@ -741,8 +763,6 @@ body{
 
         </div>
 
-
-        <!-- TIME -->
 
         <div class="card">
 
@@ -809,8 +829,6 @@ body{
     <div class="final-section">
 
 
-        <!-- IMAGE -->
-
         <div class="final-image">
 
             <img
@@ -819,8 +837,6 @@ body{
 
         </div>
 
-
-        <!-- MEANING CARD -->
 
         <div class="card">
 
@@ -874,7 +890,6 @@ body{
         </a>
 
     </div>
-
 
 </div>
 
