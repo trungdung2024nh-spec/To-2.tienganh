@@ -1,13 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Songkran Festival</title>
+<title>Songkran Water Festival</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -18,712 +17,382 @@ html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
+    color:#073b5c;
     background:
         radial-gradient(circle at 15% 10%,rgba(255,255,255,.95),transparent 28%),
         radial-gradient(circle at 85% 85%,rgba(255,255,255,.8),transparent 30%),
-        linear-gradient(145deg,#e9fbff 0%,#d2f5ff 45%,#a9e8f8 100%);
-    color:#073b5c;
+        linear-gradient(145deg,#e9fbff,#d2f5ff,#a9e8f8);
 }
 
-
-/* ================= WATER ================= */
-
+/* WATER EFFECTS */
 .drop{
     position:fixed;
     border-radius:50%;
     background:rgba(255,255,255,.7);
-    z-index:0;
     pointer-events:none;
+    z-index:0;
     animation:water 5s infinite ease-in-out;
 }
-
-.drop:nth-child(1){
-    width:18px;
-    height:18px;
-    left:8%;
-    top:12%;
-}
-
-.drop:nth-child(2){
-    width:11px;
-    height:11px;
-    left:88%;
-    top:18%;
-    animation-delay:1s;
-}
-
-.drop:nth-child(3){
-    width:15px;
-    height:15px;
-    left:13%;
-    top:78%;
-    animation-delay:2s;
-}
-
-.drop:nth-child(4){
-    width:21px;
-    height:21px;
-    left:86%;
-    top:72%;
-    animation-delay:3s;
-}
-
-.drop:nth-child(5){
-    width:9px;
-    height:9px;
-    left:48%;
-    top:6%;
-    animation-delay:1.5s;
-}
+.drop:nth-child(1){width:18px;height:18px;left:8%;top:12%;}
+.drop:nth-child(2){width:11px;height:11px;left:88%;top:18%;animation-delay:1s;}
+.drop:nth-child(3){width:15px;height:15px;left:13%;top:78%;animation-delay:2s;}
+.drop:nth-child(4){width:21px;height:21px;left:86%;top:72%;animation-delay:3s;}
+.drop:nth-child(5){width:9px;height:9px;left:48%;top:6%;animation-delay:1.5s;}
 
 @keyframes water{
-    0%,100%{
-        transform:translateY(0) scale(.6);
-        opacity:.25;
-    }
-
-    50%{
-        transform:translateY(-35px) scale(1.4);
-        opacity:.8;
-    }
+    0%,100%{transform:translateY(0) scale(.6);opacity:.25;}
+    50%{transform:translateY(-25px) scale(1.3);opacity:.8;}
 }
 
-
-/* ================= SCREEN ================= */
-
+/* MAIN PAGE */
 .screen{
-
     position:relative;
     z-index:2;
-
     width:min(100vw,56.25vh);
     height:min(100vh,177.78vw);
-
     margin:auto;
-
     padding:1.8%;
-
     display:grid;
-
-    /*
-       TITLE
-       HERO
-       GALLERY
-       NAME + TIME
-       LOCATION
-       MEANING
-       NAVIGATION
-    */
 
     grid-template-rows:
         5fr
-        23fr
-        14fr
+        20fr
+        13fr
         11fr
         16fr
-        23fr
+        21fr
+        9fr
         5fr;
 
     gap:1%;
-
+    overflow:hidden;
     background:rgba(255,255,255,.18);
-
     backdrop-filter:blur(6px);
-
     border-left:2px solid rgba(255,255,255,.65);
     border-right:2px solid rgba(255,255,255,.65);
-
-    overflow:hidden;
 }
 
-
-/* ================= TITLE ================= */
-
+/* TITLE */
 .title{
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     text-align:center;
-
-    font-size:clamp(15px,2.1vh,38px);
-
-    font-weight:900;
-
-    letter-spacing:.8px;
-
     color:#006b96;
-
-    text-shadow:
-        0 2px 5px rgba(0,90,130,.15);
-
-    animation:titleIn 1s ease;
+    font-size:clamp(13px,2vh,30px);
+    font-weight:900;
+    letter-spacing:.5px;
+    animation:fadeDown .8s ease both;
 }
 
-@keyframes titleIn{
-
-    from{
-        opacity:0;
-        transform:translateY(-20px) scale(.9);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-12px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
-
-/* ================= HERO ================= */
-
+/* MAIN IMAGE */
 .hero{
-
     position:relative;
-
-    width:100%;
-    height:100%;
-
     min-height:0;
-
     overflow:hidden;
-
+    border:3px solid white;
     border-radius:20px;
-
-    border:3px solid rgba(255,255,255,.9);
-
-    box-shadow:
-        0 8px 25px rgba(0,90,130,.25);
-
-    animation:heroIn 1.2s ease;
+    box-shadow:0 8px 25px rgba(0,90,130,.22);
+    animation:fadeIn 1s ease both;
 }
 
 .hero img{
-
+    display:block;
     width:100%;
     height:100%;
-
-    display:block;
-
     object-fit:cover;
-
     animation:zoom 8s infinite alternate;
 }
 
 .hero::after{
-
     content:"SONGKRAN FESTIVAL";
-
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
-
-    padding:8% 4% 3%;
-
-    font-size:clamp(11px,1.55vh,28px);
-
-    font-weight:900;
-
-    letter-spacing:.8px;
-
+    padding:7% 4% 3%;
     color:white;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(0,70,110,.72)
-        );
-}
-
-@keyframes heroIn{
-
-    from{
-        opacity:0;
-        transform:scale(.94);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+    font-size:clamp(10px,1.4vh,23px);
+    font-weight:900;
+    background:linear-gradient(transparent,rgba(0,55,90,.75));
 }
 
 @keyframes zoom{
-
-    from{
-        transform:scale(1);
-    }
-
-    to{
-        transform:scale(1.06);
-    }
+    from{transform:scale(1);}
+    to{transform:scale(1.06);}
 }
 
+@keyframes fadeIn{
+    from{opacity:0;transform:scale(.97);}
+    to{opacity:1;transform:scale(1);}
+}
 
-/* ================= GALLERY ================= */
-
+/* PHOTO GALLERY */
 .gallery{
-
-    width:100%;
-    height:100%;
-
     min-height:0;
-
     display:grid;
-
-    grid-template-columns:
-        1.45fr
-        1fr
-        1fr;
-
+    grid-template-columns:1.45fr 1fr 1fr;
     gap:1.5%;
 }
 
 .gallery img{
-
     width:100%;
     height:100%;
-
     min-height:0;
-
     object-fit:cover;
-
-    border-radius:15px;
-
-    border:2px solid rgba(255,255,255,.9);
-
-    box-shadow:
-        0 5px 15px rgba(0,90,130,.2);
-
-    animation:galleryIn .8s ease both;
+    border:2px solid white;
+    border-radius:14px;
+    box-shadow:0 5px 15px rgba(0,90,130,.18);
+    animation:fadeIn .8s ease both;
 }
 
-.gallery img:nth-child(2){
-    animation-delay:.15s;
-}
+.gallery img:nth-child(2){animation-delay:.15s;}
+.gallery img:nth-child(3){animation-delay:.3s;}
 
-.gallery img:nth-child(3){
-    animation-delay:.3s;
-}
-
-@keyframes galleryIn{
-
-    from{
-        opacity:0;
-        transform:scale(.85);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-
-/* ================= NAME + TIME ================= */
-
-.info-row{
-
-    width:100%;
-    height:100%;
-
-    min-height:0;
-
-    display:grid;
-
-    grid-template-columns:
-        1.65fr
-        1fr;
-
-    gap:1.5%;
-}
-
-
-/* ================= CARD ================= */
-
+/* GENERAL CARD */
 .card{
-
     position:relative;
-
-    width:100%;
-    height:100%;
-
+    min-width:0;
     min-height:0;
-
-    display:flex;
-
-    align-items:flex-start;
-
-    padding:3.5% 4%;
-
-    border-radius:17px;
-
-    background:rgba(255,255,255,.86);
-
-    border:1px solid rgba(255,255,255,.95);
-
-    box-shadow:
-        0 6px 17px rgba(0,90,130,.18);
-
-    animation:cardIn .8s ease both;
-
     overflow:hidden;
-}
-
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:70px;
-    height:70px;
-
-    right:-30px;
-    top:-30px;
-
-    border-radius:50%;
-
-    background:rgba(0,180,220,.08);
+    padding:3% 4%;
+    border-radius:17px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(255,255,255,.95);
+    box-shadow:0 5px 15px rgba(0,90,130,.14);
+    animation:cardIn .7s ease both;
 }
 
 .card::after{
-
     content:"💧";
-
     position:absolute;
-
     right:3%;
-    bottom:-7%;
-
-    font-size:2.2em;
-
-    opacity:.1;
+    bottom:-10%;
+    font-size:2.4em;
+    opacity:.09;
+    pointer-events:none;
 }
 
 @keyframes cardIn{
-
-    from{
-        opacity:0;
-        transform:translateX(-25px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
-
-/* ================= NORMAL TEXT ================= */
-
 .text{
-
     position:relative;
-
-    z-index:2;
-
+    z-index:1;
     width:100%;
-
-    font-size:clamp(8.5px,1.08vh,21px);
-
-    line-height:1.27;
-
-    color:#06496b;
+    font-size:clamp(8px,1.02vh,18px);
+    line-height:1.22;
+    color:#174e69;
+    overflow-wrap:break-word;
 }
 
 .text strong{
-
+    color:#006b9c;
     font-weight:900;
+}
 
+.heading{
+    display:block;
+    margin-bottom:2px;
+    font-size:1.05em;
+    font-weight:900;
     color:#006b9c;
 }
 
-.icon{
-    font-size:1.08em;
-}
-
-
-/* ================= LOCATION ================= */
-
-/*
-   Giảm riêng phần này để LOCATION
-   và WHAT DO PEOPLE DO? không quá to.
-*/
-
-.location-card{
-
-    width:100%;
-    height:100%;
-
+/* ORIGIN + TIME & LOCATION */
+.info-row{
     min-height:0;
-
-    padding-top:3%;
-    padding-bottom:2.5%;
-}
-
-.location-card .text{
-
-    font-size:clamp(8px,0.98vh,19px);
-
-    line-height:1.18;
-}
-
-
-/* ================= FINAL SECTION ================= */
-
-.final-section{
-
-    width:100%;
-    height:100%;
-
-    min-height:0;
-
     display:grid;
-
-    /*
-       Meaning rộng hơn.
-       Nhờ vậy Traditional Highlights
-       sẽ ít bị xuống dòng.
-    */
-
-    grid-template-columns:
-        .82fr
-        1.38fr;
-
+    grid-template-columns:1.2fr 1fr;
     gap:1.5%;
 }
 
+.info-row .card{
+    padding:3.5% 4%;
+}
 
-/* ================= FINAL IMAGE ================= */
+/* MAIN ACTIVITIES */
+.activities .text{
+    font-size:clamp(8px,.98vh,17px);
+    line-height:1.2;
+}
+
+.activities .heading{
+    margin-bottom:3px;
+}
+
+/* MEANING + CLOTHING + EXISTING IMAGE */
+.details-row{
+    min-height:0;
+    display:grid;
+    grid-template-columns:.78fr 1.42fr;
+    gap:1.5%;
+}
 
 .final-image{
-
-    width:100%;
-    height:100%;
-
+    min-width:0;
     min-height:0;
-
     overflow:hidden;
-
+    border:2px solid white;
     border-radius:18px;
-
-    border:2px solid rgba(255,255,255,.9);
-
-    box-shadow:
-        0 7px 18px rgba(0,90,130,.22);
+    box-shadow:0 6px 17px rgba(0,90,130,.2);
 }
 
 .final-image img{
-
     width:100%;
     height:100%;
-
     display:block;
-
     object-fit:cover;
-
-    transition:.5s;
+    transition:transform .4s;
 }
 
 .final-image img:hover{
-
-    transform:scale(1.06);
+    transform:scale(1.05);
 }
 
-
-/* ================= MEANING CARD ================= */
-
-.final-section .card{
-
+.details-card{
     padding:3% 4%;
-
-    align-items:flex-start;
 }
 
-.final-section .text{
-
-    font-size:clamp(8px,0.94vh,18px);
-
+.details-card .text{
+    font-size:clamp(7.5px,.91vh,16px);
     line-height:1.18;
 }
 
-
-/* ================= WATER SYMBOL ================= */
-
-.water-symbol{
-
-    position:absolute;
-
-    font-size:28px;
-
-    opacity:.35;
-
-    animation:float 4s infinite ease-in-out;
-
-    z-index:3;
+.section-gap{
+    height:5px;
 }
 
-.water1{
-    left:2%;
-    top:32%;
-}
-
-.water2{
-    right:2%;
-    top:48%;
-    animation-delay:1.5s;
-}
-
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
-}
-
-
-/* ================= NAVIGATION ================= */
-
-.navigation{
-
-    width:100%;
-    height:100%;
-
+/* CONCLUSION */
+.conclusion{
     display:flex;
-
     align-items:center;
+    padding:2.5% 4%;
+}
 
+.conclusion .text{
+    font-size:clamp(8px,.98vh,17px);
+    line-height:1.2;
+}
+
+/* NAVIGATION HAS ITS OWN ROW */
+.navigation{
+    min-height:0;
+    display:flex;
     justify-content:center;
-
+    align-items:center;
     gap:35px;
 }
 
 .navigation a{
-
+    display:inline-block;
+    padding:5px 14px;
+    border-radius:22px;
+    background:rgba(0,105,155,.94);
+    border:1px solid rgba(255,255,255,.9);
     color:white;
-
     text-decoration:none;
-
-    font-size:clamp(8px,1vh,15px);
-
+    font-size:clamp(8px,.95vh,14px);
     font-weight:bold;
-
-    padding:5px 13px;
-
-    border-radius:20px;
-
-    background:rgba(0,105,155,.92);
-
-    border:1px solid rgba(255,255,255,.8);
-
-    box-shadow:
-        0 3px 10px rgba(0,90,130,.2);
-
-    transition:.3s;
+    box-shadow:0 3px 10px rgba(0,90,130,.18);
+    transition:.25s;
 }
 
 .navigation a:hover{
-
     background:white;
-
     color:#0077a8;
-
-    transform:scale(1.08);
 }
 
-
-/* ================= SMALL PHONE ================= */
-
+/* SHORT PHONE SCREENS */
 @media(max-height:700px){
-
     .screen{
         padding:1.5%;
+        gap:.7%;
     }
 
     .text{
-        font-size:9px;
-        line-height:1.16;
+        font-size:8px;
+        line-height:1.15;
     }
 
-    .location-card .text{
-        font-size:8.5px;
-        line-height:1.14;
+    .activities .text{
+        font-size:7.8px;
+        line-height:1.15;
     }
 
-    .final-section .text{
-        font-size:8.5px;
-        line-height:1.14;
+    .details-card .text{
+        font-size:7.3px;
+        line-height:1.12;
     }
 
-    .title{
-        font-size:15px;
+    .conclusion .text{
+        font-size:7.8px;
+        line-height:1.15;
     }
 
     .navigation{
-        gap:25px;
+        gap:24px;
     }
 
     .navigation a{
-        font-size:9px;
-        padding:4px 9px;
+        padding:4px 10px;
+    }
+}
+
+/* NARROW PHONES */
+@media(max-width:360px){
+    .text{
+        font-size:7.5px;
+    }
+
+    .activities .text{
+        font-size:7.2px;
+    }
+
+    .details-card .text{
+        font-size:6.9px;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
-<!-- WATER EFFECTS -->
-
+<!-- WATER DROPS -->
 <div class="drop"></div>
 <div class="drop"></div>
 <div class="drop"></div>
 <div class="drop"></div>
 <div class="drop"></div>
-
-<div class="water-symbol water1">💦</div>
-<div class="water-symbol water2">💦</div>
-
 
 <div class="screen">
 
-
     <!-- TITLE -->
-
     <div class="title">
-        🌊 SONGKRAN – THAILAND'S WATER FESTIVAL 🌊
+        🇹🇭 SONGKRAN WATER FESTIVAL 🇹🇭
     </div>
 
-
-    <!-- MAIN IMAGE -->
-
+    <!-- MAIN PHOTO: UNCHANGED -->
     <div class="hero">
-
         <img
         src="https://commons.wikimedia.org/wiki/Special:Redirect/file/14%20April%202025%20-%20Songkran%20on%20Si%20Lom%20Road%2C%20Bangkok%20-%20img%2005.jpg"
         alt="Songkran Festival Bangkok">
-
     </div>
 
-
-    <!-- GALLERY -->
-
+    <!-- GALLERY: ALL IMAGES UNCHANGED -->
     <div class="gallery">
-
         <img
         src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Pre-Songkran%20Festival%201%2C%20Tak%2C%20Thailand.JPG"
         alt="Songkran Thailand">
@@ -735,163 +404,98 @@ body{
         <img
         src="IMG_2712.jpeg"
         alt="Songkran celebration">
-
     </div>
 
-
-    <!-- NAME + TIME -->
-
+    <!-- ORIGIN + TIME AND LOCATION -->
     <div class="info-row">
 
         <div class="card">
-
             <div class="text">
-
-                <span class="icon">☔</span>
-
-                <strong>NAME & NATURE</strong>
-
-                <br>
-
-                • Thailand's traditional New Year
-
-                <br>
-
-                • Marks the New Year according to the Buddhist calendar
-
+                <span class="heading">🌸 ORIGIN</span>
+                Thailand’s traditional New Year festival.
+                Celebrates the beginning of a new year.
             </div>
-
         </div>
 
-
         <div class="card">
-
             <div class="text">
-
-                <span class="icon">📅</span>
-
-                <strong>TIME</strong>
-
+                <span class="heading">📅 TIME & LOCATION</span>
+                April 13–15 every year.
                 <br>
-
-                April 13–15
-
+                📍 Celebrated throughout Thailand.
             </div>
-
         </div>
 
     </div>
 
-
-    <!-- LOCATION + ACTIVITIES -->
-
-    <div class="card location-card">
-
+    <!-- MAIN ACTIVITIES -->
+    <div class="card activities">
         <div class="text">
 
-            <span class="icon">📍</span>
+            <span class="heading">💦 MAIN ACTIVITIES</span>
 
-            <strong>LOCATION</strong>
-
+            💦 Water splashing for blessings.
             <br>
-
-            • Across Thailand
-
+            🙏 Visiting temples and pouring water over Buddha statues.
             <br>
-
-            • Famous in Bangkok, Chiang Mai, and Phuket
-
-            <br>
-
-            <span class="icon">💦</span>
-
-            <strong>WHAT DO PEOPLE DO?</strong>
-
-            <br>
-
-            • Splash water and have fun in the streets
-
-            <br>
-
-            • Visit temples and join traditional activities
-
-            <br>
-
-            • Enjoy Thai food
+            👨‍👩‍👧 Giving New Year wishes and showing respect to elders.
 
         </div>
-
     </div>
 
+    <!-- MEANING + CLOTHING AND FOOD -->
+    <div class="details-row">
 
-    <!-- MEANING -->
-
-    <div class="final-section">
-
-
+        <!-- EXISTING FINAL IMAGE: UNCHANGED -->
         <div class="final-image">
-
             <img
             src="IMG_2713.jpeg"
-            alt="Songkran water festival">
-
+            alt="Songkran festival illustration">
         </div>
 
-
-        <div class="card">
-
+        <div class="card details-card">
             <div class="text">
 
-                <span class="icon">✨</span>
+                <span class="heading">💧 MEANING</span>
 
-                <strong>MEANING</strong>
-
+                💧 Washing away bad luck.
                 <br>
-
-                • Water symbolizes purity
-
+                🍀 Wishing for peace and good fortune.
                 <br>
+                ❤️ Strengthening family and community bonds.
 
-                • Washes away bad luck and brings peace
+                <div class="section-gap"></div>
 
+                <span class="heading">👕 CLOTHING – CUSTOMS – FOOD</span>
+
+                👕 Colorful floral clothes.
                 <br>
-
-                • Strengthens family and community bonds
-
-                <br><br>
-
-                <span class="icon">🌺</span>
-
-                <strong>TRADITIONAL HIGHLIGHTS</strong>
-
+                🌸 Pouring scented water as a blessing.
                 <br>
-
-                Songkran is also a time for families to reunite,
-                visit temples, show respect to elders,
-                and celebrate a fresh beginning.
+                🍜 Pad Thai, Tom Yum, and mango sticky rice.
 
             </div>
-
         </div>
 
     </div>
 
+    <!-- CONCLUSION -->
+    <div class="card conclusion">
+        <div class="text">
+            <strong>🌺 CONCLUSION</strong>
+            <br>
+            Songkran is a special traditional festival that represents joy, unity, and good wishes for the New Year.
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
-
     <div class="navigation">
-
-        <a href="index.html">
-            ← BACK
-        </a>
-
-        <a href="ending.html">
-            NEXT →
-        </a>
-
+        <a href="index.html">← BACK</a>
+        <a href="ending.html">NEXT →</a>
     </div>
 
 </div>
 
 </body>
-</html>
+    </html>
+    
